@@ -1,0 +1,46 @@
+----------------------Test 1----------------------
+Epochs: 20
+Horizon: 1h
+----------------------Results---------------------
+Naive MSE: 0.008779 | MAE: 0.061699
+MLP MSE: 0.006956 | MAE: 0.058883
+LSTM MSE: 0.008009 | MAE: 0.064839
+
+Best model: MLP
+Insight: Simple feedforward models outperform both naive and sequence-based models for short-term energy forecasting, indicating that immediate feature relationships dominate one-hour-ahead predictions.
+
+
+----------------------Test 2----------------------
+Epochs: 40
+Horizon: 1h
+----------------------Results---------------------
+Naive MSE: 0.008779 | MAE: 0.061699
+MLP MSE: 0.007348 | MAE: 0.063676
+LSTM MSE: 0.008757 | MAE: 0.066729
+
+Best model: MLP
+Insight: Increasing the number of training epochs did not improve performance and slightly degraded generalization, suggesting mild overfitting. More training does not necessarily result in better predictive accuracy.
+
+
+----------------------Test 3----------------------
+Epochs: 40
+Horizon: 6h
+----------------------Results---------------------
+Naive MSE: 0.027286 | MAE: 0.126172
+MLP MSE: 0.012992 | MAE: 0.094923
+LSTM MSE: 0.011007 | MAE: 0.077650
+
+Best model: LSTM
+Insight: As the prediction horizon increases, temporal dependencies become more important. The LSTM outperforms simpler models, demonstrating the value of temporal memory for longer-term energy consumption forecasting.
+
+
+----------------------Test 4----------------------
+Epochs: 20
+Horizon: 6h
+----------------------Results---------------------
+Naive MSE: 0.027286 | MAE: 0.126172
+MLP   MSE: 0.012768 | MAE: 0.092890
+LSTM  MSE: 0.009570 | MAE: 0.074245
+
+Best model: LSTM
+Insight: Reducing training epochs improved generalization. LSTM performs best for longer forecasting horizons when overfitting is controlled.
